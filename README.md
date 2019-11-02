@@ -3,11 +3,11 @@
 
 1.[Description](#p1)
 
-2.[Installations](#p2)
+2.[Dependencies](#p2)
 
 3.[Usage](#p3)
 
-4.[Dataset](#p4)
+4.[Acknowledgements](#p4)
 
 <a id="p1"></a> 
 # Description:
@@ -20,7 +20,7 @@ This password is unique to the emotions shown, the number of emotions, and even 
 
 Emotion recognition is a technique used in software that allows a program to "read" the emotions on a human face using advanced image processing. Companies have been experimenting with combining sophisticated algorithms with image processing techniques that have emerged in the past ten years to understand more about what an image or a video of a person's face tells us about how he/she is feeling and not just that but also showing the probabilities of mixed emotions a face could has. Our emotion recognition system was originally created by Omar Ayman here [https://github.com/omar178/Emotion-recognition](https://github.com/omar178/Emotion-recognition)
 
-
+<a id="p2"></a> 
 # Dependencies:
 * Keras
 * Imutils
@@ -28,6 +28,7 @@ Emotion recognition is a technique used in software that allows a program to "re
 * Numpy
 * Tensorflow
 
+<a id="p3"></a> 
 # Usage:
 
 
@@ -57,8 +58,8 @@ The system will measure all emotions detected during the `duration_of_emotion` t
 
 This project uses [this](https://www.kaggle.com/c/3364/download-all) dataset. For more information on how to use this dataset for training, see [Omar's Repository](https://github.com/omar178/Emotion-recognition)
 
-
-# Credits
+<a id="p4"></a> 
+# Acknowledgements
 This work is inspirted by [this project](https://github.com/omar178/Emotion-recognition), which was  inspired from [this](https://github.com/oarriaga/face_classification) work and the resources of Adrian Rosebrock. 
 
 Work on turning emotions into password was a joint effort between [Luke Peacock](https://github.com/LukePeacock) and [Syed Hafizur Reza](https://github.com/sreza1) for the [Hack Sheffield 5 event](https://hacksheffield.co/)
