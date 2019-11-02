@@ -1,5 +1,6 @@
 # Project Name : Emotion-recognition
 # Table of Content :
+
 1.[Description](#p1)
 
 2.[Installations](#p2)
@@ -8,67 +9,57 @@
 
 4.[Dataset](#p4)
 
-
-
-![](https://github.com/omar178/Emotion-recognition/blob/master/emotions/Happy.PNG)
-![](https://github.com/omar178/Emotion-recognition/blob/master/emotions/angry.PNG)
-
-
-
-
 <a id="p1"></a> 
 # Description:
 
-Our Human face is having a mixed emotions so we are to demonstrate the probabilities of these emotions that we have.
+Human faces have many emotions, this project looks at using these to create a unique password to protect important files. Facial emotion is first classified using a classifier originally found here: [https://github.com/omar178/Emotion-recognition](https://github.com/omar178/Emotion-recognition). By specifying the number of emotions to use, the system will return an array of the specified number of emotions registered from the user. For example, if `hack5.py 3 1` was used to run the program, the system would return an array of 3 emotions measured as 1 second each. This returned array is then passed through an SHA-2 256 bit hash algorithm to create a password which is output to the terminal. 
+
+This password is unique to the emotions shown, the number of emotions, and even the duration specified for the emotions.
 
 ## What does Emotion Recognition mean?
 
-Emotion recognition is a technique used in software that allows a program to "read" the emotions on a human face using advanced image processing. Companies have been experimenting with combining sophisticated algorithms with image processing techniques that have emerged in the past ten years to understand more about what an image or a video of a person's face tells us about how he/she is feeling and not just that but also showing the probabilities of mixed emotions a face could has.
+Emotion recognition is a technique used in software that allows a program to "read" the emotions on a human face using advanced image processing. Companies have been experimenting with combining sophisticated algorithms with image processing techniques that have emerged in the past ten years to understand more about what an image or a video of a person's face tells us about how he/she is feeling and not just that but also showing the probabilities of mixed emotions a face could has. Our emotion recognition system was originally created by Omar Ayman here [https://github.com/omar178/Emotion-recognition](https://github.com/omar178/Emotion-recognition)
 
-<a id="p2"></a> 
-# Installations:
--keras
 
--imutils
+# Dependencies:
+* Keras
+* Imutils
+* CV2 (or OpenCV)
+* Numpy
+* Tensorflow
 
--cv2
-
--numpy
-
-<a id="p3"></a> 
 # Usage:
 
-The program will creat a window to display the scene capture by webcamera and a window representing the probabilities of detected emotions.
 
-> Demo
+The program will creat a window to display the scene capture by webcamera with a label above the detected face specifying the detected emotion with highest probability. 
+This particular system uses the pretrained model provided by Omar, but if you would like to train the data yourself, please refer to his git repository for information on how to do so. 
 
-python real_time_video.py
+To run the program, open terminal/console and navigate to the base directory:
+```
+cd ~/emotion-detection 
+```
 
-You can just use this with the provided pretrained model i have included in the path written in the code file, i have choosen this specificaly since it scores the best accuracy, feel free to choose any but in this case you have to run the later file train_emotion_classifier
-> If you just want to run this demo, the following content can be skipped
-- Train
+Then type:
+``` 
+python hack5.py emotion_count duration_of_emotion
+```
+where `emotion_count` and `duration_of_emotion` are integers. `duration_of_emotion` must be specified in seconds. The following example will detect 3 emotions with the average of each taken for a duration of 1 second:
+```
+python hack5.py 3 1
+```
 
-- python train_emotion_classifier.py
+The system will measure all emotions detected during the `duration_of_emotion` time period, it will then calculate the most common during this time and add it to the emotions array. It will do this `emotion_count` number of times. The items in the array are then hashed individually and appended to a temporary string (along with the `emotion_count` and `duration_of_emotion` parameters), and the temporary string is then hashed again. This double-hashed string is then returned via terminal for use by the user.
 
 
-<a id="p4"></a> 
-# Dataset:
 
-I have used [this](https://www.kaggle.com/c/3364/download-all) dataset
 
-Download it and put the csv in fer2013/fer2013/
+### Dataset:
 
--fer2013 emotion classification test accuracy: 66%
+This project uses [this](https://www.kaggle.com/c/3364/download-all) dataset. For more information on how to use this dataset for training, see [Omar's Repository](https://github.com/omar178/Emotion-recognition)
 
 
 # Credits
-This work is inspired from [this](https://github.com/oarriaga/face_classification) great work and the resources of Adrian Rosebrock helped me alot!.
+This work is inspirted by [this project](https://github.com/omar178/Emotion-recognition), which was  inspired from [this](https://github.com/oarriaga/face_classification) work and the resources of Adrian Rosebrock. 
 
-# Ongoing 
-Draw emotions faces next to the detected face.
+Work on turning emotions into password was a joint effort between [Luke Peacock](https://github.com/LukePeacock) and [Syed Hafizur Reza](https://github.com/sreza1) for the [Hack Sheffield 5 event](https://hacksheffield.co/)
 
-# Issues & Suggestions
-
-If any issues and suggestions to me, you can create an [issue](https://github.com/omar178/Emotion-recognition/issues).
-
-If you like this work please help me by giving me some stars.
