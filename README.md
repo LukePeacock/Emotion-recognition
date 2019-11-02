@@ -44,7 +44,7 @@ Then type:
 ``` 
 python hack5.py emotion_count duration_of_emotion
 ```
-where `emotion_count` and `duration_of_emotion` are integers. `duration_of_emotion` must be specified in seconds. The following example will detect 3 emotions with the average of each taken for a duration of 1 second:
+where `emotion_count` is an integer and `duration_of_emotion` is a decimal. `duration_of_emotion` must be specified in seconds. The following example will detect 3 emotions with the average of each taken for a duration of 1 second:
 ```
 python hack5.py 3 1
 ```
