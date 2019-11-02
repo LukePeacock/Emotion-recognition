@@ -14,7 +14,7 @@ def encrypt_string(hash_string):
 def create_password(emotions, emo_num, emo_dur):
     password = ""
 
-    for item in emos:
+    for item in emotions:
         password+= encrypt_string(item)
     password += encrypt_string(emo_num)
     password += encrypt_string(emo_dur)
@@ -23,5 +23,7 @@ def create_password(emotions, emo_num, emo_dur):
 
 # Test emotion array
 emos = ['happy', 'sad', 'happy']
-password = create_password(emos, emo_num, emo_dur)
-print(password, 3, 1)
+emo_num = 3
+emo_dur = 1
+password = create_password(emos, str(emo_num), str(emo_dur))
+print(password)
