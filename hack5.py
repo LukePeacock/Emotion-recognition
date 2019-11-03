@@ -96,7 +96,8 @@ if __name__ == '__main__':
     emo_dur = config.emo_duration
     print("parameters: " + "-e: " + str(emo_num) + "; -t: " + str(emo_dur))
     
-    emos = (start_stream(emo_num,emo_dur))
+    emos = (start_stream(float(emo_num),float(emo_dur)))
+    print(emos)
     # Test emotion array
     #emos = ['happy', 'sad', 'happy']
     #hash the emotions
