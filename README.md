@@ -1,4 +1,4 @@
-# Project Name : Emotion-recognition
+# Project Name : Emotional Password Protection
 # Table of Content :
 
 1.[Description](#p1)
