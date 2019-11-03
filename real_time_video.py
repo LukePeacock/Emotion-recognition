@@ -25,7 +25,7 @@ def start_stream(max_emotionx,timex):
     emo_array=[]
     emo_pass_arr = []
     #estimated that each loop is around 1.04/30 seconds
-    one_tick_in_seconds = 1.04/30
+    one_tick_in_seconds = 1.10/15
     sec_to_tick = timex/one_tick_in_seconds
     #convert seconds to ticks
     max_count = round(sec_to_tick)
@@ -37,7 +37,7 @@ def start_stream(max_emotionx,timex):
     while True:
         frame = camera.read()[1]
         #reading the frame
-        frame = imutils.resize(frame,width=300)
+        frame = imutils.resize(frame,width=600)
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         faces = face_detection.detectMultiScale(gray,scaleFactor=1.1,minNeighbors=5,minSize=(30,30),flags=cv2.CASCADE_SCALE_IMAGE)
         
