@@ -32,7 +32,7 @@ def start_stream(max_emotionx,timex):
     max_emotion = max_emotionx
     stream_finish = False
     # starting video streaming
-    cv2.namedWindow('your_face')
+    cv2.namedWindow('Hack5 Emo Detector')
     camera = cv2.VideoCapture(0)
     while True:
         frame = camera.read()[1]
