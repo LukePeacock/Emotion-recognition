@@ -62,5 +62,4 @@ This project uses [this](https://www.kaggle.com/c/3364/download-all) dataset. Fo
 # Acknowledgements
 This work is inspired by [this project](https://github.com/omar178/Emotion-recognition), which was  inspired from [this](https://github.com/oarriaga/face_classification) work and the resources of Adrian Rosebrock. 
 
-Work on turning emotions into a password was a joint effort between [Luke Peacock](https://github.com/LukePeacock) and [Syed Hafizur Reza](https://github.com/sreza1) for the [Hack Sheffield 5 event](https://hacksheffield.co/)
-
+Expaning the inspired project to average the emotions over a period of time and output a specified number of averages, as well as the hashing, input parameters for number of emotions and averaging duration, and turning emotions into a password was a joint effort between [Luke Peacock](https://github.com/LukePeacock) and [Syed Hafizur Reza](https://github.com/sreza1) for the [Hack Sheffield 5 event](https://hacksheffield.co/)
