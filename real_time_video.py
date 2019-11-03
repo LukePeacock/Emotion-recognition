@@ -72,7 +72,7 @@ def start_stream(max_emotionx,timex):
             cv2.putText(frameClone, label, (fX, fY - 10),
             cv2.FONT_HERSHEY_DUPLEX, 0.45, (0, 0, 255), 2)
 
-        cv2.imshow('your_face', frameClone)
+        cv2.imshow('Hack5 Emo Detector', frameClone)
 
         #if the stream has recorded the maximum number of emotions needed to be recorded, it ends the stream
         if len(emo_pass_arr) == max_emotion:
