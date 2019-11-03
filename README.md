@@ -32,8 +32,8 @@ Emotion recognition is a technique used in software that allows a program to "re
 # Usage:
 
 
-The program will creat a window to display the scene capture by webcamera with a label above the detected face specifying the detected emotion with highest probability. 
-This particular system uses the pretrained model provided by Omar, but if you would like to train the data yourself, please refer to his git repository for information on how to do so. 
+The program will create a window to display the scene capture by web camera with a label above the detected face specifying the detected emotion with highest probability. 
+This particular system uses the pre-trained model provided by Omar, but if you would like to train the data yourself, please refer to his git repository for information on how to do so. 
 
 To run the program, open terminal/console and navigate to the base directory:
 ```
@@ -60,7 +60,7 @@ This project uses [this](https://www.kaggle.com/c/3364/download-all) dataset. Fo
 
 <a id="p4"></a> 
 # Acknowledgements
-This work is inspirted by [this project](https://github.com/omar178/Emotion-recognition), which was  inspired from [this](https://github.com/oarriaga/face_classification) work and the resources of Adrian Rosebrock. 
+This work is inspired by [this project](https://github.com/omar178/Emotion-recognition), which was  inspired from [this](https://github.com/oarriaga/face_classification) work and the resources of Adrian Rosebrock. 
 
 Work on turning emotions into password was a joint effort between [Luke Peacock](https://github.com/LukePeacock) and [Syed Hafizur Reza](https://github.com/sreza1) for the [Hack Sheffield 5 event](https://hacksheffield.co/)
 
