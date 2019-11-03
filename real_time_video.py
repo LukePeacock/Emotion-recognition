@@ -3,8 +3,7 @@ import imutils
 import cv2
 from keras.models import load_model
 import numpy as np
-
-
+from statistics import mode
 # parameters for loading data and images
 detection_model_path = 'haarcascade_files/haarcascade_frontalface_default.xml'
 emotion_model_path = 'models/_mini_XCEPTION.102-0.66.hdf5'
@@ -20,12 +19,18 @@ EMOTIONS = ["angry" ,"disgust","scared", "happy", "sad", "surprised",
 #for index, emotion in enumerate(EMOTIONS):
    # feelings_faces.append(cv2.imread('emojis/' + emotion + '.png', -1))
 
-def start_stream(max_emotionx,max_countx):
+def start_stream(max_emotionx,timex):
+    #counter and ticks are same thing here
     counter = 0
+    emo_array=[]
     emo_pass_arr = []
-    max_count = max_countx
-    prev_label = ""
+    #estimated that each loop is around 1.04/30 seconds
+    one_tick_in_seconds = 1.04/30
+    sec_to_tick = timex/one_tick_in_seconds
+    #convert seconds to ticks
+    max_count = round(sec_to_tick)
     max_emotion = max_emotionx
+    stream_finish = False
     # starting video streaming
     cv2.namedWindow('your_face')
     camera = cv2.VideoCapture(0)
@@ -41,8 +46,8 @@ def start_stream(max_emotionx,max_countx):
             faces = sorted(faces, reverse=True,
             key=lambda x: (x[2] - x[0]) * (x[3] - x[1]))[0]
             (fX, fY, fW, fH) = faces
-                        # Extract the ROI of the face from the grayscale image, resize it to a fixed 28x28 pixels, and then prepare
-                # the ROI for classification via the CNN
+            # Extract the ROI of the face from the grayscale image, resize it to a fixed 28x28 pixels, and then prepare
+            # the ROI for classification via the CNN
             roi = gray[fY:fY + fH, fX:fX + fW]
             roi = cv2.resize(roi, (64, 64))
             roi = roi.astype("float") / 255.0
@@ -51,34 +56,30 @@ def start_stream(max_emotionx,max_countx):
             
             
             preds = emotion_classifier.predict(roi)[0]
-            emotion_probability = np.max(preds)
             label = EMOTIONS[preds.argmax()]
-            if label == label and counter != max_count:
+            if counter != max_count:
                 counter=counter+1
-            elif label == prev_label:
+                emo_array.append(label)
+            elif counter == max_count:
+                #picks most common emotion found for given time interval
+                emo_pass_arr.append(mode(emo_array))
                 counter = 0
-            elif label==label and counter == max_count:
-                prev_label = label
-                emo_pass_arr.append(label)
-                counter = 0
+                emo_array = []
         else: continue
         for (i, (emotion, prob)) in enumerate(zip(EMOTIONS, preds)):
-            # construct the label text
-            text = "{}: {:.2f}%".format(emotion, prob * 100)
-
-            # draw the label + probability bar on the canvas
-            # emoji_face = feelings_faces[np.argmax(preds)]
-
-                    
-            w = int(prob * 300)
             cv2.putText(frameClone, label, (fX, fY - 10),
             cv2.FONT_HERSHEY_SIMPLEX, 0.45, (0, 0, 255), 2)
 
         cv2.imshow('your_face', frameClone)
-        #if len(emo_pass_arr) == max_emotion:
-        if cv2.waitKey(1) & 0xFF == ord('q'):
+
+        #if the stream has recorded the maximum number of emotions needed to be recorded, it ends the stream
+        if len(emo_pass_arr) == max_emotion:
+            stream_finish = True
+        
+        if cv2.waitKey(1) & stream_finish:
             break
 
     camera.release()
     cv2.destroyAllWindows()
+    #returns array of emotions
     return emo_pass_arr
