@@ -66,9 +66,11 @@ def start_stream(max_emotionx,timex):
                 counter = 0
                 emo_array = []
         else: continue
+        label += " : " + str(round((max_count - counter)*one_tick_in_seconds,2)) + "s"
+        
         for (i, (emotion, prob)) in enumerate(zip(EMOTIONS, preds)):
             cv2.putText(frameClone, label, (fX, fY - 10),
-            cv2.FONT_HERSHEY_SIMPLEX, 0.45, (0, 0, 255), 2)
+            cv2.FONT_HERSHEY_DUPLEX, 0.45, (0, 0, 255), 2)
 
         cv2.imshow('your_face', frameClone)
 
