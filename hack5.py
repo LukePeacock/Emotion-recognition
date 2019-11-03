@@ -10,9 +10,9 @@ OPTIONS:
 
 #===============================================
 from __future__ import print_function
+from real_time_video import start_stream
 import sys, getopt, hashlib
 
-#from real_time_video import start_stream
 
 #========================================
 # Command Line Processing
@@ -94,14 +94,15 @@ if __name__ == '__main__':
         sys.exit(0)
     emo_num = config.emo_number
     emo_dur = config.emo_duration
-    print(str(emo_num) + ":" + str(emo_dur))
+    print("parameters: " + "-e: " + str(emo_num) + "; -t: " + str(emo_dur))
     
-    
+    emos = (start_stream(emo_num,emo_dur))
     # Test emotion array
-    emos = ['happy', 'sad', 'happy']
+    #emos = ['happy', 'sad', 'happy']
+    #hash the emotions
     password = create_password(emos, str(emo_num), str(emo_dur))
     print(password)
 
 
 
-#emos = (start_stream(3,50))
+
